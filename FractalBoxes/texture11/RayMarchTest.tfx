@@ -1,0 +1,74 @@
+//@author: vux
+//@help: template for texture fx
+//@tags: texture
+//@credits: 
+
+Texture2D texture2d : PREVIOUS;
+
+SamplerState linearSampler : IMMUTABLE
+{
+    Filter = MIN_MAG_MIP_LINEAR;
+    AddressU = Clamp;
+    AddressV = Clamp;
+};
+
+float3 LightDir = normalize(float3(1.0,1.0,1.0));
+float2 mouse;
+float4 col<bool color = true;> = 0;
+
+float3 camPos = float3(0,0,10);
+
+float distfunc_sphere(float3 pos, float size){
+	return length(pos) - size;
+}
+
+float3 getNormal(float3 pos, float size){
+	float ep = .0001;
+	return normalize(float3(
+		distfunc_sphere(pos, size) - distfunc_sphere(float3(pos.x-ep, pos.y, pos.z), size),
+		distfunc_sphere(pos, size) - distfunc_sphere(float3(pos.x, pos.y-ep, pos.z), size),
+		distfunc_sphere(pos, size) - distfunc_sphere(float3(pos.x, pos.y, pos.z-ep), size)));
+}
+
+struct psInput
+{
+	float4 p : SV_Position;
+	float2 uv : TEXCOORD0;
+};
+
+
+float4 PS(psInput input) : SV_Target
+{
+	float2 screenPos = input.uv*2.0-1.0;
+	
+	float3 color = float3(0,0,0);
+	
+	float3 rayDir = normalize(float3(screenPos, 0) - camPos);
+	float3 rayPos = camPos;
+	
+	float size = 1.0 - (1-length(mouse));
+	
+	for(int i = 0; i < 16; i++){
+		float d = distfunc_sphere(rayPos, size);
+		if(d < 0.0001){
+			float3 normal = getNormal(rayPos, size);
+			float diff = dot(normal, LightDir);
+			color = float3(diff, diff, diff) + float3(.1,.1,.1);
+			break;
+		}
+		rayPos += rayDir*d;
+	}
+	
+	return float4(color, col.a);
+}
+
+technique10 Sphere
+{
+	pass P0
+	{
+		SetPixelShader(CompileShader(ps_4_0,PS()));
+	}
+}
+
+
+

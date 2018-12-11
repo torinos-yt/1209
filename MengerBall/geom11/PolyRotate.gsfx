@@ -1,0 +1,91 @@
+//@author: vux
+//@help: template for geometry fx
+//@tags: geometry
+//@credits:
+
+SamplerState linearSampler: IMMUTABLE
+{
+    Filter = MIN_MAG_MIP_LINEAR;
+    AddressU = Wrap;
+    AddressV = Wrap;
+};
+
+#define PI 3.1415
+
+float dis;
+float distort;
+float leng;
+
+float3x3 rot3D(float3 n, float a){
+	return float3x3(cos(a)+(n.x*n.x)*(1-cos(a)), n.x*n.y*(1-cos(a))-n.x*sin(a), n.x*n.z*(1-cos(a))+n.y*sin(a),
+					n.y*n.x*(1-cos(a))+n.z*sin(a), cos(a)+n.y*n.y*(1-cos(a)), n.y*n.z*(1-cos(a))-n.x*sin(a),
+					n.z*n.x*(1-cos(a))-n.y*sin(a), n.z*n.y*(1-cos(a))+n.z*sin(a), cos(a)+n.z*n.z*(1-cos(a)));
+}
+
+struct vs2gs
+{
+	float3 PosO: POSITION;
+	float3 Normal: NORMAL;
+	float2 UV: TEXCOORD0;
+	float m : TEXCOORD1;
+};
+
+float4x4 tW;
+
+vs2gs VS(
+	float3 PosO: POSITION,
+	float3 Normal: NORMAL,
+	float2 UV: TEXCOORD0,
+	uint InstanceID: SV_VertexID)
+{
+	vs2gs Out;
+	float3 p = mul(PosO, tW).xyz;
+	float m = smoothstep(0, 1,(1-saturate(distance(PosO, normalize(PosO)*dis) * leng))) * .5;
+	Out.m = m;
+	
+	Out.PosO = p + float3(0, m*distort+.15, 0);
+	Out.Normal = mul(Normal, tW).xyz;
+	Out.UV = UV;
+	
+    return Out;
+}
+
+[maxvertexcount(3)]
+void GS(triangle vs2gs input[3], inout TriangleStream<vs2gs>GSOut){
+	vs2gs v;
+	float3 center = 0;
+	float mm = 0;
+
+	for(uint i=0;i<3;i++){
+		center += input[i].PosO;
+		mm += input[i].m;
+	}
+	
+	center /= 3;
+	mm /= 3;
+	
+	for(uint j=0;j<3;j++){
+		v = input[j];
+		v.PosO = (v.PosO - center) * .1 * (10*(1-mm));
+		float3x3 rotm = rot3D(normalize(cross(normalize(float3(center.x, 0, center.z)), float3(0,1,0))), mm*3);
+		v.PosO = mul(v.PosO, rotm) + center; 
+		GSOut.Append(v);
+	}
+	
+	
+}
+
+GeometryShader StreamOutGS = ConstructGSWithSO( CompileShader( gs_5_0, GS() ),
+	"POSITION.xyz;NORMAL.xyz;TEXCOORD0.xy"
+);
+
+
+technique10 PassMesh
+{
+    pass PP2
+    {
+        SetVertexShader( CompileShader( vs_4_0, VS() ) );
+    	SetGeometryShader( CompileShader( gs_5_0, GS() ) );
+        SetGeometryShader( StreamOutGS );
+    }  
+}

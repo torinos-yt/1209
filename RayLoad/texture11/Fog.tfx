@@ -1,0 +1,38 @@
+Texture2D col: PREVIOUS;
+Texture2D depth ;
+
+float Gamma;
+
+SamplerState linearSampler : IMMUTABLE
+{
+    Filter = MIN_MAG_MIP_LINEAR;
+    AddressU = Clamp;
+    AddressV = Clamp;
+};
+
+struct psInput
+{
+	float4 p : SV_Position;
+	float2 uv : TEXCOORD0;
+};
+
+float4 fcol <bool color = true; string uiname = "Fog Color";> = 1;
+
+
+float4 fog(psInput input) : SV_Target
+{
+	float4 z = depth.Sample(linearSampler, input.uv);
+	float4 c = col.Sample(linearSampler, input.uv);
+	return lerp(c, fcol, pow(abs(z.r), Gamma));
+}
+
+technique10 Fog
+{
+	pass P0
+	{
+		SetPixelShader(CompileShader(ps_4_0,fog()));
+	}
+}
+
+
+

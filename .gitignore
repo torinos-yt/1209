@@ -1,0 +1,14 @@
+# .v4p backup files
+*~.xml
+
+# Dynamic plugins .dll
+bin/
+
+Comp.v4p
+
+#Houdini project file
+*.hiplc
+
+#Files that can not be included due to rights
+*.png
+tree_b.obj
