@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
-   <PATCH nodename="C:\Users\iryut\Desktop\SkinMeshOutput\VATWrite.v4p" systemname="VATWrite" filename="C:\Users\iryut\Desktop\SkinMeshOutput\VATWrite.v4p" scrollx="15" scrolly="15">
+   <PATCH nodename="C:\1209\Pigeons\SkinMeshOutput\VATWrite.v4p" systemname="VATWrite" filename="C:\Users\iryut\Desktop\SkinMeshOutput\VATWrite.v4p" scrollx="15" scrolly="15">
    <BOUNDS type="Window" left="705" top="0" width="12390" height="15240">
    </BOUNDS>
    <NODE systemname="ColladaFile (EX9.Geometry)" filename="%VVVV%\lib\nodes\plugins\ColladaLoader.dll" nodename="ColladaFile (EX9.Geometry)" componentmode="Hidden" id="0">
@@ -51,7 +51,7 @@
    <NODE systemname="Renderer (DX11)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Renderer (DX11)" componentmode="InAWindow" id="10" stayontop="1">
    <BOUNDS type="Node" left="2385" top="9135" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Window" left="12120" top="3540" width="10215" height="9975">
+   <BOUNDS type="Window" left="12525" top="1575" width="10215" height="9975">
    </BOUNDS>
    <PIN pinname="View" visible="1" slicecount="1" values="||">
    </PIN>
@@ -71,7 +71,7 @@
    </BOUNDS>
    <PIN pinname="Mesh" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Apply" slicecount="1" visible="1" values="1">
+   <PIN pinname="Apply" slicecount="1" visible="1" values="0">
    </PIN>
    <PIN pinname="Geometry Out" visible="1">
    </PIN>
@@ -87,7 +87,7 @@
    </BOUNDS>
    <PIN pinname="Render State" visible="1" slicecount="1" values="||">
    </PIN>
-   <PIN pinname="Mode" slicecount="1" values="FrontCullSimple">
+   <PIN pinname="Mode" slicecount="1" values="NoCullSimple">
    </PIN>
    </NODE>
    <NODE systemname="GouraudDirectional (DX11.Effect)" filename="%VVVV%\packs\dx11\nodes\dx11\GouraudDirectional.fx" nodename="GouraudDirectional (DX11.Effect)" componentmode="Hidden" id="25">
@@ -109,7 +109,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="1395" top="345" width="4225" height="4990">
    </BOUNDS>
-   <BOUNDS type="Window" left="11460" top="7425" width="4380" height="4980">
+   <BOUNDS type="Window" left="4080" top="6945" width="4380" height="4980">
    </BOUNDS>
    <PIN pinname="Transform" visible="1">
    </PIN>
@@ -303,7 +303,7 @@
    <LINK srcnodeid="52" srcpinname="Sampler" dstnodeid="45" dstpinname="Sampler State">
    </LINK>
    <NODE systemname="FeedbackCS" filename="D:\iryut\dawnload\FeedbackCS\FeedbackCS\FeedbackCS.v4p" nodename="FeedbackCS.v4p" componentmode="Hidden" id="53">
-   <BOUNDS type="Node" left="8055" top="6690" width="100" height="100">
+   <BOUNDS type="Node" left="8010" top="6645" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Color Buffer" visible="1" slicecount="1" values="||">
    </PIN>
@@ -341,21 +341,23 @@
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="Reset">
    </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="54" srcpinname="Y Output Value" dstnodeid="53" dstpinname="Reset">
    </LINK>
    <LINK srcnodeid="41" srcpinname="Y Output Value" dstnodeid="53" dstpinname="Texture Size">
    </LINK>
    <NODE systemname="Writer (DX11.Texture 2d)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Writer (DX11.Texture 2d)" componentmode="Hidden" id="55">
-   <BOUNDS type="Node" left="8040" top="7185" width="100" height="100">
+   <BOUNDS type="Node" left="10260" top="7380" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="8040" top="7185" width="3000" height="3000">
+   <BOUNDS type="Box" left="10260" top="7380" width="3000" height="3000">
    </BOUNDS>
    <PIN pinname="Texture In" visible="1">
    </PIN>
    <PIN pinname="Filename" slicecount="1" values="Bird_postex.dds">
    </PIN>
-   <PIN pinname="Write" slicecount="1" values="0">
+   <PIN pinname="Write" slicecount="1" values="0" visible="1">
    </PIN>
    <PIN pinname="Format" slicecount="1" values="Dds">
    </PIN>
@@ -377,7 +379,7 @@
    </BOUNDS>
    <PIN pinname="Transform Out" visible="1">
    </PIN>
-   <PIN pinname="X" slicecount="1" values="-3.97">
+   <PIN pinname="X" slicecount="1" values="-4.73">
    </PIN>
    </NODE>
    <LINK srcnodeid="62" srcpinname="Transform Out" dstnodeid="25" dstpinname="Transform In">
@@ -405,7 +407,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="690" top="6330" width="3000" height="3000">
    </BOUNDS>
-   <PIN pinname="Filename" slicecount="1" values="C:\Users\iryut\Desktop\SkinMeshOutput\BirdMesh.obj">
+   <PIN pinname="Filename" slicecount="1" values="bied_blend.dae">
    </PIN>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -529,7 +531,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="3390" top="795" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.925054347935657">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1.19">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -540,24 +542,68 @@
    </NODE>
    <LINK srcnodeid="85" srcpinname="Y Output Value" dstnodeid="2" dstpinname="Time">
    </LINK>
-   <NODE systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InAWindow" id="86" stayontop="1">
-   <BOUNDS type="Node" left="8985" top="7320" width="100" height="100">
+   <LINK srcnodeid="28" srcpinname="Change" dstnodeid="54" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="83" srcpinname="Y Output Value" dstnodeid="80" dstpinname="time">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="90">
+   <BOUNDS type="Box" left="4230" top="1515" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Box" left="8985" top="7320" width="6000" height="4500">
+   <BOUNDS type="Node" left="4230" top="1515" width="0" height="0">
    </BOUNDS>
-   <BOUNDS type="Window" left="22380" top="5790" width="6240" height="3720">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="X Input Value" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="90" srcpinname="Y Output Value" dstnodeid="16" dstpinname="Apply">
+   </LINK>
+   <LINK srcnodeid="28" srcpinname="Output" dstnodeid="85" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Preview (DX11.Texture)" filename="%VVVV%\packs\dx11\nodes\plugins\base\VVVV.DX11.Nodes.dll" nodename="Preview (DX11.Texture)" componentmode="InAWindow" id="102">
+   <BOUNDS type="Node" left="8910" top="8130" width="100" height="100">
+   </BOUNDS>
+   <BOUNDS type="Box" left="8910" top="8130" width="6000" height="4500">
+   </BOUNDS>
+   <BOUNDS type="Window" left="22560" top="5520" width="6240" height="3315">
    </BOUNDS>
    <PIN pinname="Texture In" visible="1">
    </PIN>
    <PIN pinname="Sampler State" visible="1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="53" srcpinname="Buffers" dstnodeid="86" dstpinname="Texture In">
+   <LINK srcnodeid="53" srcpinname="Buffers" dstnodeid="102" dstpinname="Texture In">
    </LINK>
-   <LINK srcnodeid="28" srcpinname="Change" dstnodeid="54" dstpinname="Y Input Value">
+   <LINK srcnodeid="52" srcpinname="Sampler" dstnodeid="102" dstpinname="Sampler State">
    </LINK>
-   <LINK srcnodeid="83" srcpinname="Y Output Value" dstnodeid="80" dstpinname="time">
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="103">
+   <BOUNDS type="Box" left="10815" top="6570" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="10815" top="6570" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Bang">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Write">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="103" srcpinname="Y Output Value" dstnodeid="55" dstpinname="Write">
    </LINK>
-   <LINK srcnodeid="52" srcpinname="Sampler" dstnodeid="86" dstpinname="Sampler State">
-   </LINK>
+   <PACK Name="dx11.particles" Version="1.0.6">
+   </PACK>
    </PATCH>

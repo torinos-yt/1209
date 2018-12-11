@@ -386,7 +386,7 @@
    </NODE>
    <LINK srcnodeid="23" srcpinname="Variables" dstnodeid="12" dstpinname="Structure" hiddenwhenlocked="0">
    </LINK>
-   <NODE systemname="AsGeometry_Instanceoffset (DX11.GeomFX)" filename="%VVVV%\packs\dx11.particles\nodes\modules\Tools\geom11\AsGeometry_Instanceoffset.gsfx" nodename="AsGeometry_Instanceoffset (DX11.GeomFX)" componentmode="Hidden" id="45">
+   <NODE systemname="AsGeometry_Instanceoffset (DX11.GeomFX)" filename="..\geom11\AsGeometry_Instanceoffset.gsfx" nodename="AsGeometry_Instanceoffset (DX11.GeomFX)" componentmode="Hidden" id="45">
    <BOUNDS type="Node" left="915" top="5250" width="12810" height="270">
    </BOUNDS>
    <PIN pinname="Technique" slicecount="1" values="GeometryOut">

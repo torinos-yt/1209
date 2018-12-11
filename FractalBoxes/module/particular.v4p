@@ -1,5 +1,5 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50beta37.dtd" >
-   <PATCH nodename="C:\1209\Kimi wo Nosete\module\particular.v4p" systemname="particular" filename="C:\1209\Kimi wo Nosete\module\particular.v4p" scrollx="0" scrolly="1650">
+   <PATCH nodename="C:\1209\FractalBoxes\module\particular.v4p" systemname="particular" filename="C:\1209\Kimi wo Nosete\module\particular.v4p" scrollx="0" scrolly="1650">
    <NODE systemname="Emitter (DX11.Particles.Emitter DynamicBuffer)" filename="%VVVV%\packs\dx11.particles\nodes\modules\Emitters\Emitter (DX11.Particles.Emitter DynamicBuffer).v4p" nodename="Emitter (DX11.Particles.Emitter DynamicBuffer)" componentmode="Hidden" id="0">
    <BOUNDS type="Node" left="1140" top="6300" width="100" height="100">
    </BOUNDS>
@@ -120,20 +120,12 @@
    <PIN pinname="Default" slicecount="1" values="|0, 0, 0|">
    </PIN>
    </NODE>
-   <NODE systemname="Triangle (DX11.Geometry)" filename="..\..\..\vvvv\contributions\modules\Triangle (DX11.Geometry).v4p" nodename="Triangle (DX11.Geometry)" componentmode="Hidden" id="12">
-   <BOUNDS type="Node" left="15" top="7605" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Geometry Out" visible="1">
-   </PIN>
-   <PIN pinname="Geometry Out2" visible="1">
-   </PIN>
-   </NODE>
    <NODE systemname="Constant (DX11.Particles.Effect)" filename="%VVVV%\packs\dx11.particles\nodes\modules\Effects\Constant (DX11.Particles.Effect).v4p" nodename="Constant (DX11.Particles.Effect)" componentmode="Hidden" id="13">
    <BOUNDS type="Node" left="720" top="10950" width="100" height="100">
    </BOUNDS>
    <PIN pinname="ParticleSystemBuffers" visible="1">
    </PIN>
-   <PIN pinname="Geometry" visible="1">
+   <PIN pinname="Geometry" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Layer" visible="1">
    </PIN>
@@ -397,8 +389,6 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="14" srcpinname="Render State" dstnodeid="13" dstpinname="Render State">
-   </LINK>
-   <LINK srcnodeid="12" srcpinname="Geometry Out2" dstnodeid="13" dstpinname="Geometry">
    </LINK>
    <LINK srcnodeid="6" srcpinname="ParticleSystemBuffers" dstnodeid="13" dstpinname="ParticleSystemBuffers">
    </LINK>
@@ -695,5 +685,15 @@
    <LINK srcnodeid="51" srcpinname="Y Output Value" dstnodeid="38" dstpinname="Width">
    </LINK>
    <LINK srcnodeid="38" srcpinname="Layer" dstnodeid="43" dstpinname="Layer 2">
+   </LINK>
+   <NODE systemname="Triangle (DX11.Geometry)" filename="Triangle (DX11.Geometry).v4p" nodename="Triangle (DX11.Geometry)" componentmode="Hidden" id="12">
+   <BOUNDS type="Node" left="15" top="7605" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Geometry Out" visible="1">
+   </PIN>
+   <PIN pinname="Geometry Out2" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Geometry Out2" dstnodeid="13" dstpinname="Geometry">
    </LINK>
    </PATCH>
